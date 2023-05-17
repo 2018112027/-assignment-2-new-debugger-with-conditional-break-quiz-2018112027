@@ -1,5 +1,7 @@
 from utils import next_inputs, input
-from .debuggingbook import Debugger
+import bookutils
+import sys
+from Debugger import Debugger
 
 class CondBreakDebugger(Debugger):
     def set_command(self, arg: str = "") -> None:
