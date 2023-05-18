@@ -55,7 +55,7 @@ class CondBreakDebugger(CondBreakDebugger):
         elif len(token) == 3:
             self.breakvar = token[0].strip()
             value = token[2].strip()
-            self.breakvalue = eval(value)
+            self.breakvalue = eval(value, self.frame.f_globals, self.frame.f_locals)
 
 
 class CondBreakDebugger(CondBreakDebugger):
@@ -64,7 +64,6 @@ class CondBreakDebugger(CondBreakDebugger):
         if self.breakvar:
             if self.breakvar in self.local_vars:
                 if self.local_vars[self.breakvar] == self.breakvalue:
-                    print(self.breakvar, self.breakvalue)
                     self.breakvar = 0
                     self.breakvalue = 0
                     return True
