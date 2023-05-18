@@ -16,7 +16,7 @@ def test_debug_sha256():
 
 def test_debug_md5():
     clear_next_inputs()
-    next_inputs(["break d0 == 0x10325476", "continue",  "set d0 = 01333333", "continue"])
+    next_inputs(["break d0 = 0x10325476", "continue",  "set d0 = 01333333", "continue"])
     with CondBreakDebugger() as debugged:
         encoded = "waytooloooooooooong".encode()
         hash = md5_me(encoded).hex()
