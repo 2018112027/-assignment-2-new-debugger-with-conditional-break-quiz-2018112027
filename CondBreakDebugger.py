@@ -55,8 +55,9 @@ class CondBreakDebugger(CondBreakDebugger):
 class CondBreakDebugger(CondBreakDebugger):
     def stop_here(self) -> bool:
         """Return True if we should stop"""
-        for var, value in self.breakvars:
-            if var in self.local_vars:
-                if self.breakvars[var] == value:
-                    return True
+        if slef.breakvars:
+            for var, value in self.breakvars:
+                if var in self.local_vars:
+                    if self.breakvars[var] == value:
+                        return True
         return self.stepping or self.frame.f_lineno in self.breakpoints
