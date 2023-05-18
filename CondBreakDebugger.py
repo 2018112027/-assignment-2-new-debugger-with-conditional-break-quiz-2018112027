@@ -24,7 +24,7 @@ class CondBreakDebugger(CondBreakDebugger):
 
 class CondBreakDebugger(CondBreakDebugger):
     def attr_command(self, arg: str = "") -> None:
-        temp = str.split(',')
+        temp = arg.split(',')
         OBJ = eval(temp[0].strip())
         VAR = temp[1].strip()
         EXPR = temp[2].strip()
@@ -64,7 +64,7 @@ class CondBreakDebugger(CondBreakDebugger):
         if self.breakvar:
             if self.breakvar in self.local_vars:
                 if self.local_vars[self.breakvar] == self.breakvalue:
-                    self.breakvar = 0
-                    self.breakvalue = 0
+                    self.breakvar = None
+                    self.breakvalue = None
                     return True
         return self.stepping or self.frame.f_lineno in self.breakpoints
